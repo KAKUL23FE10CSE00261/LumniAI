@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analysing Skin...</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:linear-gradient(135deg,#6c63ff,#a89cff);min-height:100vh;
+     display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.center{text-align:center;color:#fff;}
+.face{font-size:5rem;margin-bottom:1rem;animation:bounce 1s ease-in-out infinite;}
+@keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-15px);}}
+h2{font-size:1.6rem;margin-bottom:.4rem;letter-spacing:.04em;}
+p{opacity:.85;margin-bottom:2rem;}
+.bar-track{width:300px;height:8px;background:rgba(255,255,255,.3);border-radius:4px;margin:0 auto;}
+.bar-fill{height:8px;background:#fff;border-radius:4px;width:0%;transition:width .3s;}
+.star{position:fixed;font-size:1.2rem;animation:drift 4s ease-in-out infinite;}
+@keyframes drift{0%,100%{transform:translateY(0) rotate(0deg);opacity:.7;}
+                 50%{transform:translateY(-30px) rotate(20deg);opacity:1;}}
+</style>
+</head>
+<body>
+<span class="star" style="top:10%;left:8%;animation-delay:0s">✦</span>
+<span class="star" style="top:20%;left:75%;animation-delay:.5s">✦</span>
+<span class="star" style="top:70%;left:85%;animation-delay:1s">✦</span>
+<span class="star" style="top:80%;left:15%;animation-delay:1.5s">✦</span>
+<div class="center">
+  <div class="face">🙂</div>
+  <h2>Analysing Your Skin...</h2>
+  <p>AI is working its magic ✨</p>
+  <div class="bar-track"><div class="bar-fill" id="bar"></div></div>
+</div>
+<script>
+let w=0;
+const bar=document.getElementById('bar');
+const iv=setInterval(()=>{
+  w+=Math.random()*8+3;
+  if(w>=100){w=100;clearInterval(iv);setTimeout(()=>location.href='/dashboard',400);}
+  bar.style.width=w+'%';
+},200);
+</script>
+</body>
+</html>

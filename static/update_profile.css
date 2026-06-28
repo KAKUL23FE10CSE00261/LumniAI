@@ -1,0 +1,23 @@
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:#f0f2f5;
+     min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem;}
+.profile-wrap{width:100%;}
+.profile-card{background:#fff;border-radius:20px;box-shadow:0 4px 30px rgba(0,0,0,.08);
+              padding:2.5rem;max-width:500px;margin:0 auto;}
+.profile-card h2{font-size:1.7rem;font-weight:700;text-align:center;margin-bottom:1.5rem;}
+.profile-card form{display:flex;flex-direction:column;gap:1rem;}
+.profile-card input,.profile-card select{
+  border:1.5px solid #e0e0e0;border-radius:10px;padding:.8rem 1rem;
+  font-size:.95rem;outline:none;transition:.2s;background:#fff;}
+.profile-card input:focus,.profile-card select:focus{border-color:#6c63ff;}
+.issues-section{background:#f7f7ff;border-radius:12px;padding:1rem 1.2rem;}
+.issues-label{display:block;font-weight:700;margin-bottom:.7rem;color:#333;}
+.check-row{display:flex;align-items:center;gap:.7rem;margin-bottom:.5rem;}
+.check-row input[type=checkbox]{width:18px;height:18px;accent-color:#6c63ff;}
+.check-row label{font-size:.95rem;color:#444;cursor:pointer;}
+.btn-primary{background:linear-gradient(135deg,#6c63ff,#a89cff);color:#fff;border:none;
+             border-radius:10px;padding:.85rem;font-size:1rem;font-weight:700;cursor:pointer;}
+.btn-primary:hover{opacity:.9;}
+.alert-err{background:#ffe8e8;color:#c0392b;border-radius:8px;padding:.7rem 1rem;
+           margin-bottom:1rem;font-size:.9rem;text-align:center;}
+a{color:#6c63ff;font-weight:600;}

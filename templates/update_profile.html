@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Update Profile – Skin Care AI</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/update_profile.css') }}">
+</head>
+<body>
+<div class="profile-wrap">
+  <div class="profile-card">
+    <h2>Update Profile</h2>
+    {% if error %}<div class="alert-err">{{ error }}</div>{% endif %}
+    <form method="POST">
+      <input name="age" type="number" placeholder="Age" min="10" max="100"
+             value="{{ user.profile.age if user.profile else '' }}">
+
+      <select name="gender">
+        <option value="">Select Gender</option>
+        {% for g in ['Male','Female','Non-binary','Prefer not to say'] %}
+        <option value="{{ g }}"
+          {{ 'selected' if user.profile and user.profile.get('gender')==g else '' }}>{{ g }}</option>
+        {% endfor %}
+      </select>
+
+      <select name="skin_type">
+        <option value="">Select Skin Type</option>
+        {% for t in ['Normal','Oily','Dry','Combination','Sensitive'] %}
+        <option value="{{ t }}"
+          {{ 'selected' if user.profile and user.profile.get('skin_type')==t else '' }}>{{ t }}</option>
+        {% endfor %}
+      </select>
+
+      <div class="issues-section">
+        <label class="issues-label">Skin Issues</label>
+        {% set cur = user.profile.get('skin_issues', []) if user.profile else [] %}
+        {% for issue in ['Acne','Pimples','Dark Spots','Wrinkles','Redness','Dryness','Oiliness'] %}
+        <div class="check-row">
+          <input type="checkbox" name="issues" value="{{ issue }}" id="i_{{ loop.index }}"
+                 {{ 'checked' if issue in cur else '' }}>
+          <label for="i_{{ loop.index }}">{{ issue }}</label>
+        </div>
+        {% endfor %}
+      </div>
+
+      <select name="water">
+        <option value="">Water Intake (glasses/day)</option>
+        {% for n in range(1,16) %}
+        <option value="{{ n }}"
+          {{ 'selected' if user.profile and user.profile.get('lifestyle',{}).get('water_intake')==n else '' }}>
+          {{ n }} glasses/day</option>
+        {% endfor %}
+      </select>
+
+      <input name="sleep" type="number" placeholder="Sleep Hours (hrs/day)" min="1" max="12"
+             value="{{ user.profile.lifestyle.sleep_hours if user.profile and user.profile.get('lifestyle') else '' }}">
+
+      <button type="submit" class="btn-primary">Next →</button>
+    </form>
+    <p style="text-align:center;margin-top:1rem;">
+      <a href="{{ url_for('upload') }}">Or analyse a skin photo instead →</a>
+    </p>
+  </div>
+</div>
+</body>
+</html>

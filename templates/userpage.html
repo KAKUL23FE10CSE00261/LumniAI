@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Dashboard | Skin AI</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<style>
+.user-hero{text-align:center;padding:3rem 1rem 1rem;}
+.user-hero h1{font-size:2.2rem;font-weight:700;color:#1a1a2e;}
+.user-hero p{color:#555;margin-top:.5rem;}
+.action-row{display:flex;gap:1rem;justify-content:center;margin:1.5rem 0;}
+.skin-type-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;max-width:1000px;margin:0 auto 2rem;}
+.skin-card{background:#fff;border:1px solid #e8e8e8;border-radius:12px;padding:1.4rem;transition:box-shadow .2s;}
+.skin-card:hover{box-shadow:0 4px 20px rgba(0,0,0,.08);}
+.skin-card h3{color:#6c63ff;font-size:1rem;margin-bottom:.4rem;}
+.skin-card p{color:#666;font-size:.9rem;}
+.ai-list{max-width:700px;margin:0 auto 2rem;}
+.ai-item{background:#fff;border:1px solid #e8e8e8;border-radius:8px;padding:1rem 1.4rem;margin-bottom:.7rem;color:#333;}
+.why-badges{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;margin:1rem 0 2rem;}
+.badge{background:#f0f0ff;color:#6c63ff;border-radius:20px;padding:.4rem 1rem;font-size:.85rem;}
+.tip-box{background:linear-gradient(135deg,#6c63ff,#7c73ff);color:#fff;border-radius:16px;padding:2rem;text-align:center;max-width:800px;margin:0 auto 3rem;}
+.tip-box h3{font-size:1.2rem;margin-bottom:.6rem;}
+.section-title{text-align:center;font-size:1.5rem;font-weight:700;color:#1a1a2e;margin:2.5rem 0 1.2rem;}
+</style>
+</head>
+<body>
+<nav class="navbar" style="background:#fff;border-bottom:1px solid #eee;">
+  <div class="brand">Skin Care AI</div>
+  <div class="nav-btns">
+    <a href="{{ url_for('logout') }}" class="btn btn-outline">Logout</a>
+  </div>
+</nav>
+
+<div class="user-hero">
+  <h1>Your Personal Skin Intelligence Center ✨</h1>
+  <p>Learn, understand, and improve your skincare decisions using AI-driven insights.</p>
+  <div class="action-row">
+    <a href="{{ url_for('upload') }}"         class="btn btn-primary">📸 Analyse Skin Photo</a>
+    <a href="{{ url_for('update_profile') }}" class="btn btn-primary">📝 Fill Skin Profile</a>
+    {% if user.get('profile') %}
+    <a href="{{ url_for('dashboard') }}"      class="btn btn-outline">📊 View Dashboard</a>
+    {% endif %}
+    <a href="{{ url_for('logout') }}"         class="btn btn-outline">Logout</a>
+  </div>
+</div>
+
+<h2 class="section-title">Know Your Skin Type</h2>
+<div class="skin-type-grid" style="padding:0 2rem;">
+  <div class="skin-card"><h3>Normal Skin</h3><p>Balanced hydration and oil with minimal sensitivity.</p></div>
+  <div class="skin-card"><h3>Dry Skin</h3><p>Feels tight and flaky, needs intense moisturisation.</p></div>
+  <div class="skin-card"><h3>Oily Skin</h3><p>Produces excess oil, often prone to acne.</p></div>
+  <div class="skin-card"><h3>Combination Skin</h3><p>Oily T-zone with dry or normal cheeks.</p></div>
+  <div class="skin-card"><h3>Sensitive Skin</h3><p>Reacts easily; prone to redness and irritation.</p></div>
+</div>
+
+<h2 class="section-title">How Our AI Helps You</h2>
+<div class="ai-list">
+  <div class="ai-item">Analyses your skincare habits and lifestyle patterns</div>
+  <div class="ai-item">Calculates a personalised skin health score</div>
+  <div class="ai-item">Identifies potential skin concerns early</div>
+  <div class="ai-item">Suggests routine improvements for long-term skin health</div>
+  <div class="ai-item">Detects oiliness, redness, spots and texture from your photo</div>
+</div>
+
+<h2 class="section-title">Why Use Skin AI?</h2>
+<div class="why-badges">
+  <span class="badge">✓ Personalised insights</span>
+  <span class="badge">✓ Smarter routines</span>
+  <span class="badge">✓ Prevent skin issues</span>
+  <span class="badge">✓ Build confidence</span>
+  <span class="badge">✓ Photo-based CV analysis</span>
+</div>
+
+<div style="padding:0 1rem;">
+  <div class="tip-box">
+    <h3>Daily Skin Tip 💡</h3>
+    <p>{{ tip }}</p>
+  </div>
+</div>
+
+<footer><p>2025 Skin Care AI &nbsp;|&nbsp; Educational &amp; Academic Project</p></footer>
+</body>
+</html>

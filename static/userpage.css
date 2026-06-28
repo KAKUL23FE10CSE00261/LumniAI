@@ -1,0 +1,86 @@
+/* ── userpage.css ──────────────────────────────────────────────────────────── */
+.userpage-body {
+  background: #f8f9fa;
+  min-height: 100vh;
+  padding-bottom: 3rem;
+}
+
+.up-hero {
+  background: #fff;
+  text-align: center;
+  padding: 3.5rem 1.5rem 2.5rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+.up-hero h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: .75rem;
+}
+.up-hero p { color: #6b7280; font-size: 1rem; margin-bottom: 1.5rem; }
+.up-hero-btns { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+
+.up-section {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+}
+.up-section h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Skin type cards */
+.skin-type-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+.skin-type-card {
+  background: #fff;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 6px rgba(0,0,0,.06);
+}
+.st-title { font-size: 1rem; font-weight: 700; margin-bottom: .5rem; }
+.st-normal { color: #6d28d9; }
+.st-dry    { color: #0ea5e9; }
+.st-oily   { color: #d97706; }
+.st-combo  { color: #6d28d9; }
+.skin-type-card p { font-size: .88rem; color: #6b7280; line-height: 1.5; }
+
+/* AI helps list */
+.ai-helps-list { display: flex; flex-direction: column; gap: .75rem; }
+.ai-helps-item {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: .9rem 1.2rem;
+  font-size: .95rem;
+  color: #374151;
+  box-shadow: 0 1px 4px rgba(0,0,0,.04);
+}
+
+/* Why pills */
+.why-pills { display: flex; gap: .75rem; flex-wrap: wrap; justify-content: center; }
+.why-pill {
+  background: #f3f4f6;
+  border-radius: 50px;
+  padding: .5rem 1.1rem;
+  font-size: .88rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+/* Daily tip */
+.daily-tip-card {
+  background: linear-gradient(135deg, #6d28d9, #7c3aed);
+  color: #fff;
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+}
+.daily-tip-card h3 { font-size: 1.2rem; margin-bottom: .75rem; }
+.daily-tip-card p  { font-size: 1rem; opacity: .95; }
