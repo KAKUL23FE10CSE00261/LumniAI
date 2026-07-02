@@ -1,8 +1,5 @@
-from app import mongo
+from app.extensions import mongo
 
 
 def get_db():
-    """
-    Returns the MongoDB database instance.
-    """
     return mongo.db

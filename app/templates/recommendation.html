@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Skin Care Recommendation</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/recommendation.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🌿 Your Personalized Skin Care Report</h1>
+
+    <div class="card">
+
+        <h2>Detected Skin Issue</h2>
+
+        <p>{{ skin_issue }}</p>
+
+    </div>
+
+    <div class="card">
+
+        <h2>Skin Type</h2>
+
+        <p>{{ skin_type }}</p>
+
+    </div>
+
+    <div class="grid">
+
+        <div class="item">
+
+            <h3>🧼 Cleanser</h3>
+
+            <p>{{ recommendation.cleanser }}</p>
+
+        </div>
+
+        <div class="item">
+
+            <h3>💧 Moisturizer</h3>
+
+            <p>{{ recommendation.moisturizer }}</p>
+
+        </div>
+
+        <div class="item">
+
+            <h3>✨ Serum</h3>
+
+            <p>{{ recommendation.serum }}</p>
+
+        </div>
+
+        <div class="item">
+
+            <h3>☀️ Sunscreen</h3>
+
+            <p>{{ recommendation.sunscreen }}</p>
+
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <h2>🥗 Recommended Foods</h2>
+
+        <ul>
+
+            {% for food in recommendation.foods %}
+
+            <li>{{ food }}</li>
+
+            {% endfor %}
+
+        </ul>
+
+    </div>
+
+    <div class="card">
+
+        <h2>🚫 Ingredients To Avoid</h2>
+
+        <ul>
+
+            {% for item in recommendation.ingredients_to_avoid %}
+
+            <li>{{ item }}</li>
+
+            {% endfor %}
+
+        </ul>
+
+    </div>
+
+    <div class="button-container">
+
+        <a href="/" class="btn">
+
+            Go Back Home
+
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

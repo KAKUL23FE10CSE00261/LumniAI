@@ -1,6 +1,4 @@
-from flask_bcrypt import Bcrypt
-
-bcrypt = Bcrypt()
+from app.extensions import bcrypt
 
 
 def hash_password(password):
@@ -8,4 +6,7 @@ def hash_password(password):
 
 
 def verify_password(hashed_password, password):
-    return bcrypt.check_password_hash(hashed_password, password)
+    return bcrypt.check_password_hash(
+        hashed_password,
+        password
+    )

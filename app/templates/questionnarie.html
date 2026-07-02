@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Skin Type Questionnaire</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/questionnaire.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Skin Type Assessment</h1>
+
+    <p class="subtitle">
+        Answer the following questions honestly to determine your skin type.
+    </p>
+
+    <form action="/questionnaire" method="POST">
+
+        <div class="question">
+
+            <h3>1. After washing your face, how does your skin feel?</h3>
+
+            <label><input type="radio" name="q1" value="dry" required> Tight and Dry</label>
+
+            <label><input type="radio" name="q1" value="normal"> Comfortable</label>
+
+            <label><input type="radio" name="q1" value="oily"> Oily within 1 hour</label>
+
+        </div>
+
+        <div class="question">
+
+            <h3>2. How shiny is your face after 2–3 hours?</h3>
+
+            <label><input type="radio" name="q2" value="dry" required> Never</label>
+
+            <label><input type="radio" name="q2" value="combination"> Only T-zone</label>
+
+            <label><input type="radio" name="q2" value="oily"> Entire Face</label>
+
+        </div>
+
+        <div class="question">
+
+            <h3>3. How large are your pores?</h3>
+
+            <label><input type="radio" name="q3" value="dry" required> Small</label>
+
+            <label><input type="radio" name="q3" value="combination"> Medium</label>
+
+            <label><input type="radio" name="q3" value="oily"> Large</label>
+
+        </div>
+
+        <div class="question">
+
+            <h3>4. Do you have flaky skin?</h3>
+
+            <label><input type="radio" name="q4" value="dry" required> Often</label>
+
+            <label><input type="radio" name="q4" value="normal"> Rarely</label>
+
+            <label><input type="radio" name="q4" value="oily"> Never</label>
+
+        </div>
+
+        <div class="question">
+
+            <h3>5. How often do you get acne?</h3>
+
+            <label><input type="radio" name="q5" value="dry" required> Rarely</label>
+
+            <label><input type="radio" name="q5" value="combination"> Sometimes</label>
+
+            <label><input type="radio" name="q5" value="oily"> Frequently</label>
+
+        </div>
+
+        <div class="question">
+
+            <h3>6. Which best describes your T-zone?</h3>
+
+            <label><input type="radio" name="q6" value="dry" required> Dry</label>
+
+            <label><input type="radio" name="q6" value="combination"> Oily</label>
+
+            <label><input type="radio" name="q6" value="normal"> Balanced</label>
+
+        </div>
+
+        <button type="submit">
+            Submit
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

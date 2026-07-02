@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+Dashboard
+
+{% endblock %}
+
+{% block content %}
+
+<h2>
+
+Welcome
+
+{{current_user.name}}
+
+👋
+
+</h2>
+
+<hr>
+
+<div class="row">
+
+<div class="col-md-4">
+
+<div class="card p-4 text-center shadow">
+
+<h4>
+
+👤 Profile
+
+</h4>
+
+<a
+href="/profile"
+class="btn btn-success">
+
+Open
+
+</a>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="card p-4 text-center shadow">
+
+<h4>
+
+📷 Upload
+
+</h4>
+
+<a
+href="/upload"
+class="btn btn-primary">
+
+Upload
+
+</a>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="card p-4 text-center shadow">
+
+<h4>
+
+📊 History
+
+</h4>
+
+<a
+href="/history"
+class="btn btn-warning">
+
+History
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

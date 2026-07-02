@@ -1,21 +1,82 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Login</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-<h2>Login</h2>
+{% block title %}
+
+Login
+
+{% endblock %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+
+<div class="col-md-5">
+
+<div class="card shadow">
+
+<div class="card-header bg-success text-white text-center">
+
+<h3>Login</h3>
+
+</div>
+
+<div class="card-body">
 
 <form method="POST">
 
-    <input type="email" name="email" placeholder="Email" required><br><br>
+<div class="mb-3">
 
-    <input type="password" name="password" placeholder="Password" required><br><br>
+<label>Email</label>
 
-    <button type="submit">Login</button>
+<input
+type="email"
+name="email"
+class="form-control"
+required>
+
+</div>
+
+<div class="mb-3">
+
+<label>Password</label>
+
+<input
+type="password"
+name="password"
+class="form-control"
+required>
+
+</div>
+
+<button
+class="btn btn-success w-100">
+
+Login
+
+</button>
 
 </form>
 
-</body>
-</html>
+<hr>
+
+<p class="text-center">
+
+Don't have an account?
+
+<a href="{{url_for('auth.signup')}}">
+
+Signup
+
+</a>
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

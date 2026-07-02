@@ -1,37 +1,57 @@
-from app.database.user_collection import users_collection
+from app.database.collections import users_collection
+from app.models.user import User
 from app.utils.password import hash_password, verify_password
 
 
 class AuthService:
 
     @staticmethod
-    def register_user(data):
+    def register_user(form):
 
-        if users_collection.find_one({"email": data["email"]}):
-            return False, "Email already exists"
+        # Check Email
+        if users_collection.find_one({"email": form["email"]}):
+            return False, "Email already registered."
+
+        # Check Username
+        if users_collection.find_one({"username": form["username"]}):
+            return False, "Username already exists."
+
+        # Password Match
+        if form["password"] != form["confirm_password"]:
+            return False, "Passwords do not match."
 
         user = {
-            "name": data["name"],
-            "email": data["email"],
-            "username": data["username"],
-            "age": int(data["age"]),
-            "gender": data["gender"],
-            "password": hash_password(data["password"])
+
+            "name": form["name"],
+
+            "email": form["email"],
+
+            "username": form["username"],
+
+            "age": int(form["age"]),
+
+            "gender": form["gender"],
+
+            "password": hash_password(form["password"])
+
         }
 
         users_collection.insert_one(user)
 
-        return True, "Registration Successful"
+        return True, "Registration Successful."
 
     @staticmethod
     def login_user(email, password):
 
-        user = users_collection.find_one({"email": email})
+        user = User.get_by_email(email)
 
-        if not user:
+        if user is None:
             return None
 
-        if verify_password(user["password"], password):
+        if verify_password(
+                user.user_data["password"],
+                password):
+
             return user
 
         return None

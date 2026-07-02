@@ -1,0 +1,351 @@
+{% extends "base.html" %}
+
+{% block title %}
+Profile
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="card shadow-lg">
+
+        <div class="card-header bg-success text-white">
+
+            <h3>User Profile</h3>
+
+        </div>
+
+        <div class="card-body">
+
+            <form method="POST">
+
+                <!-- Personal Information -->
+
+                <h4 class="text-success">Personal Information</h4>
+
+                <hr>
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+
+                        <label>Full Name</label>
+
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="full_name"
+                            value="{{ profile.full_name if profile else '' }}"
+                            required>
+
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+
+                        <label>Age</label>
+
+                        <input
+                            type="number"
+                            class="form-control"
+                            name="age"
+                            value="{{ profile.age if profile else '' }}"
+                            required>
+
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+
+                        <label>Gender</label>
+
+                        <select
+                            class="form-select"
+                            name="gender"
+                            required>
+
+                            <option value="">Select</option>
+
+                            <option value="Male">Male</option>
+
+                            <option value="Female">Female</option>
+
+                            <option value="Other">Other</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+
+                        <label>Height (cm)</label>
+
+                        <input
+                            type="number"
+                            step="0.1"
+                            class="form-control"
+                            name="height"
+                            value="{{ profile.height if profile else '' }}"
+                            required>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label>Weight (kg)</label>
+
+                        <input
+                            type="number"
+                            step="0.1"
+                            class="form-control"
+                            name="weight"
+                            value="{{ profile.weight if profile else '' }}"
+                            required>
+
+                    </div>
+
+                </div>
+
+                <!-- Lifestyle -->
+
+                <h4 class="text-success mt-4">Lifestyle</h4>
+
+                <hr>
+
+                <div class="row">
+
+                    <div class="col-md-4 mb-3">
+
+                        <label>Water Intake (L/day)</label>
+
+                        <input
+                            type="number"
+                            step="0.1"
+                            class="form-control"
+                            name="water_intake"
+                            value="{{ profile.water_intake if profile else '' }}"
+                            required>
+
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+
+                        <label>Sleep Hours</label>
+
+                        <input
+                            type="number"
+                            step="0.5"
+                            class="form-control"
+                            name="sleep_hours"
+                            value="{{ profile.sleep_hours if profile else '' }}"
+                            required>
+
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+
+                        <label>Exercise</label>
+
+                        <select class="form-select" name="exercise">
+
+                            <option>Sedentary</option>
+                            <option>Light</option>
+                            <option>Moderate</option>
+                            <option>Active</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-4 mb-3">
+
+                        <label>Stress Level</label>
+
+                        <select class="form-select" name="stress_level">
+
+                            <option>Low</option>
+                            <option>Medium</option>
+                            <option>High</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+
+                        <label>Smoking</label>
+
+                        <select class="form-select" name="smoking">
+
+                            <option>No</option>
+                            <option>Occasionally</option>
+                            <option>Yes</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+
+                        <label>Alcohol</label>
+
+                        <select class="form-select" name="alcohol">
+
+                            <option>No</option>
+                            <option>Occasionally</option>
+                            <option>Yes</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <!-- Skin Information -->
+
+                <h4 class="text-success mt-4">Skin Information</h4>
+
+                <hr>
+
+                <div class="row">
+
+                    <div class="col-md-4 mb-3">
+
+                        <label>Skin Type</label>
+
+                        <select class="form-select" name="skin_type">
+
+                            <option>Oily</option>
+                            <option>Dry</option>
+                            <option>Combination</option>
+                            <option>Normal</option>
+                            <option>Sensitive</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+
+                        <label>Skin Tone</label>
+
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="skin_tone"
+                            value="{{ profile.skin_tone if profile else '' }}">
+
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+
+                        <label>Sensitive Skin</label>
+
+                        <select class="form-select" name="sensitive_skin">
+
+                            <option>No</option>
+                            <option>Yes</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-4 mb-3">
+
+                        <label>Acne History</label>
+
+                        <select class="form-select" name="acne_history">
+
+                            <option>No</option>
+                            <option>Yes</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+
+                        <label>Pigmentation</label>
+
+                        <select class="form-select" name="pigmentation">
+
+                            <option>No</option>
+                            <option>Yes</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+
+                        <label>Allergies</label>
+
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="allergies"
+                            value="{{ profile.allergies if profile else 'None' }}">
+
+                    </div>
+
+                </div>
+
+                <!-- Medical -->
+
+                <h4 class="text-success mt-4">Medical Information</h4>
+
+                <hr>
+
+                <div class="mb-3">
+
+                    <label>Medical Conditions</label>
+
+                    <textarea
+                        class="form-control"
+                        rows="3"
+                        name="medical_conditions">{{ profile.medical_conditions if profile else '' }}</textarea>
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label>Current Medications</label>
+
+                    <textarea
+                        class="form-control"
+                        rows="3"
+                        name="medications">{{ profile.medications if profile else '' }}</textarea>
+
+                </div>
+
+                <div class="text-center">
+
+                    <button
+                        class="btn btn-success btn-lg">
+
+                        Save Profile
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

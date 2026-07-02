@@ -1,32 +1,92 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Signup</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-<h2>Signup</h2>
+{% block title %}
+
+Signup
+
+{% endblock %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+
+<div class="col-md-6">
+
+<div class="card shadow">
+
+<div class="card-header bg-success text-white text-center">
+
+<h3>Create Account</h3>
+
+</div>
+
+<div class="card-body">
 
 <form method="POST">
 
-    <input type="text" name="name" placeholder="Full Name" required><br><br>
+<input class="form-control mb-3"
+name="name"
+placeholder="Full Name"
+required>
 
-    <input type="email" name="email" placeholder="Email" required><br><br>
+<input class="form-control mb-3"
+type="email"
+name="email"
+placeholder="Email"
+required>
 
-    <input type="text" name="username" placeholder="Username" required><br><br>
+<input class="form-control mb-3"
+name="username"
+placeholder="Username"
+required>
 
-    <input type="number" name="age" placeholder="Age" required><br><br>
+<input class="form-control mb-3"
+type="number"
+name="age"
+placeholder="Age"
+required>
 
-    <select name="gender">
-        <option>Male</option>
-        <option>Female</option>
-    </select><br><br>
+<select
+class="form-select mb-3"
+name="gender">
 
-    <input type="password" name="password" placeholder="Password" required><br><br>
+<option>Male</option>
 
-    <button type="submit">Signup</button>
+<option>Female</option>
+
+<option>Other</option>
+
+</select>
+
+<input
+class="form-control mb-3"
+type="password"
+name="password"
+placeholder="Password"
+required>
+
+<input
+class="form-control mb-3"
+type="password"
+name="confirm_password"
+placeholder="Confirm Password"
+required>
+
+<button
+class="btn btn-success w-100">
+
+Signup
+
+</button>
 
 </form>
 
-</body>
-</html>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

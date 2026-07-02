@@ -1,25 +1,30 @@
-from flask import Flask
+from flask import render_template
+from flask_login import login_required, current_user
 
-from app.routes.auth import auth_bp
-from app.utils.password import bcrypt
+from app import create_app
+from app.extensions import login_manager
 
-app = Flask(__name__)
+app = create_app()
 
-app.secret_key = "SkinAI@2026"
 
-bcrypt.init_app(app)
-
-app.register_blueprint(auth_bp)
+@login_manager.user_loader
+def load_user(user_id):
+    from app.models.user import User
+    return User.get_by_id(user_id)
 
 
 @app.route("/")
 def home():
-    return "Skin Care AI"
+    return render_template("login.html")
 
 
 @app.route("/dashboard")
+@login_required
 def dashboard():
-    return "Dashboard"
+    return render_template(
+        "dashboard.html",
+        current_user=current_user
+    )
 
 
 if __name__ == "__main__":

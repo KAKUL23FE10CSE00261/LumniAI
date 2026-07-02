@@ -2,10 +2,10 @@ from app.database.mongodb import get_db
 
 db = get_db()
 
-# Collections
 users_collection = db["users"]
 profiles_collection = db["profiles"]
-analysis_collection = db["analysis_history"]
+analysis_collection = db["analysis"]
 recommendations_collection = db["recommendations"]
-chat_history_collection = db["chat_history"]
+history_collection = db["history"]
 reports_collection = db["reports"]
+chatbot_logs_collection = db["chatbot_logs"]

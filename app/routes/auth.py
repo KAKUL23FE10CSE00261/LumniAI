@@ -1,4 +1,12 @@
-from flask import Blueprint, render_template, request, redirect, url_for, flash, session
+from flask import Blueprint
+from flask import render_template
+from flask import request
+from flask import redirect
+from flask import url_for
+from flask import flash
+
+from flask_login import login_user
+from flask_login import logout_user
 
 from app.services.auth_service import AuthService
 
@@ -13,7 +21,9 @@ def signup():
         success, message = AuthService.register_user(request.form)
 
         if success:
+
             flash(message, "success")
+
             return redirect(url_for("auth.login"))
 
         flash(message, "danger")
@@ -29,16 +39,28 @@ def login():
         email = request.form["email"]
         password = request.form["password"]
 
-        user = AuthService.login_user(email, password)
+        user = AuthService.login_user(
+            email,
+            password
+        )
 
         if user:
 
-            session["user_id"] = str(user["_id"])
-            session["username"] = user["username"]
+            login_user(user)
 
-            return redirect(url_for("dashboard"))
+            flash(
+                "Login Successful!",
+                "success"
+            )
 
-        flash("Invalid Email or Password", "danger")
+            return redirect(
+                url_for("dashboard")
+            )
+
+        flash(
+            "Invalid Email or Password",
+            "danger"
+        )
 
     return render_template("login.html")
 
@@ -46,6 +68,13 @@ def login():
 @auth_bp.route("/logout")
 def logout():
 
-    session.clear()
+    logout_user()
 
-    return redirect(url_for("auth.login"))
+    flash(
+        "Logged Out Successfully.",
+        "success"
+    )
+
+    return redirect(
+        url_for("auth.login")
+    )

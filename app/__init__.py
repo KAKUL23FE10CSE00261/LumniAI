@@ -1,25 +1,13 @@
 from flask import Flask
-from flask_bcrypt import Bcrypt
-from flask_login import LoginManager
-from flask_pymongo import PyMongo
 
 from config import Config
-
-# Initialize Extensions
-bcrypt = Bcrypt()
-mongo = PyMongo()
-login_manager = LoginManager()
-
-# Configure Flask-Login
-login_manager.login_view = "auth.login"
-login_manager.login_message = "Please login first."
-login_manager.login_message_category = "warning"
+from app.extensions import bcrypt, mongo, login_manager
 
 
 def create_app():
+
     app = Flask(__name__)
 
-    # Load Configuration
     app.config.from_object(Config)
 
     # Initialize Extensions
@@ -29,8 +17,10 @@ def create_app():
 
     # Import Blueprints
     from app.routes.auth import auth_bp
+    from app.routes.profile import profile_bp
 
     # Register Blueprints
     app.register_blueprint(auth_bp)
+    app.register_blueprint(profile_bp)
 
     return app
